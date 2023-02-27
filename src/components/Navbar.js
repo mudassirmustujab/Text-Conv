@@ -25,7 +25,9 @@ function Navbar(props) {
 
 
   <div className="custom-control  text-light custom-switch " style={{
-    marginLeft:'auto'
+    marginLeft:'auto',
+    display:'flex'
+    ,alignItems:'center'
 
   }}>
       <input type="checkbox" class="custom-control-input" id="customSwitch1" onClick={props.mode}/>

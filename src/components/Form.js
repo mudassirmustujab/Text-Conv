@@ -18,6 +18,10 @@ function Form(props) {
     );
   };
 
+  const clear = ()=>{
+    setText("")
+  }
+
   // const noOfWords = ()=>{
   //   if (text.length===0) {
   //     setText('0')
@@ -25,9 +29,8 @@ function Form(props) {
   //     text.split(" ").length
   //   }
   // }
-
+  
   const [text, setText] = useState("");
-
   return (
     <>
       <div
@@ -52,21 +55,24 @@ function Form(props) {
         <div className="buttons container text-center py-3">
           <button
             onClick={toLowerCase}
-            className="btn btn-success btn-outline "
+            className={`btn btn-success mx-2 ${props.toggleMode==='dark'?'bg-light text-dark border border-dark':'bg-success text-light'}`}
           >
             Convert to lower case
           </button>
-          <button onClick={toUpperCase} className="btn btn-success mx-2 my-2">
+          <button onClick={toUpperCase} className={`btn btn-success mx-2 ${props.toggleMode==='dark'?'bg-light text-dark border border-dark':'bg-success text-light'}`}>
             Convert to upper case
           </button>
-          <button onClick={sampleText} className="btn btn-success">
+          <button onClick={sampleText} className={`btn btn-success ${props.toggleMode==='dark'?'bg-light text-dark border border-dark':'bg-success text-light'}`}>
             Add sample text
+          </button>
+          <button className={`btn btn-success mx-2 ${props.toggleMode==='dark'?'bg-light text-dark border border-dark':'bg-success text-light'}`} onClick={clear} >
+            Clear Text
           </button>
           <div className="acc pt-5">
             <h5>
               
               {"No of words: "+
-                text.split(" ").filter((element) => {
+                text.split(/\s+/).filter((element) => {
                   return element.length !== 0;
                 }).length
                 
